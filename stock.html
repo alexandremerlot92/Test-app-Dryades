@@ -9,7 +9,8 @@
 <body>
   <div class="container">
     <h1>STOCKS</h1>
-
+      <div class="menu">
+            <a href="afficher_stocks.html" class="button">AFFICHER STOCKS</a>
     <!-- Table -->
     <table id="activityTable">
       <thead>
@@ -18,6 +19,7 @@
           <th>Cuvée</th>
           <th>Millésime</th>
           <th>Quantité</th>
+          <th>Commentaire</th>
         </tr>
       </thead>
       <tbody>
@@ -39,12 +41,15 @@
       
       <label for="quantite">Quantité:</label>
       <input type="number" id="quantite" required>
+
+      <label for="commentaire">Commentaire:</label>
+      <input type="text" id="commentaire" >
       
       <button type="submit">Modifier</button>
     </form>
     <a href="index.html" class="back-link">← Back to Menu</a>
   </div>
 
-  <script src="script.js"></script>
+  <script src="modifier stocks.js"></script>
 </body>
 </html>
