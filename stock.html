@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Dryades</title>
+  <link rel="stylesheet" href="style stock.css">
+</head>
+<body>
+  <div class="container">
+    <h1>STOCKS</h1>
+
+    <!-- Table -->
+    <table id="activityTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Cuvée</th>
+          <th>Millésime</th>
+          <th>Quantité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- New rows will be added here -->
+      </tbody>
+    </table>
+
+    <!-- Form to input new row data -->
+    <h3>Modifier les stocks</h3>
+    <form id="activityForm">
+      <label for="date">Date:</label>
+      <input type="date" id="date" required>
+      
+      <label for="cuvee">Cuvée:</label>
+      <input type="text" id="cuvee" required>
+      
+      <label for="millesime">Millésime:</label>
+      <input type="text" id="millesime" required>
+      
+      <label for="quantite">Quantité:</label>
+      <input type="number" id="quantite" required>
+      
+      <button type="submit">Modifier</button>
+    </form>
+    <a href="index.html" class="back-link">← Back to Menu</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
