@@ -1,0 +1,42 @@
+<!-- produits.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produits Dryades</title>
+  <link rel="stylesheet" href="style stock.css">
+</head>
+<body>
+  <div class="container">
+    <h1>PRODUITS</h1>
+      <div class="menu">
+            <a href="afficher_produits.html" class="button">AFFICHER PRODUITS</a>
+
+    <!-- Form to input new row data -->
+    <h3>Ajouter un produit</h3>
+    <form id="productForm">
+      <label for="id">ID:</label>
+      <input type="text" id="id" required>
+      
+      <label for="cuvee">Cuvée:</label>
+      <input type="text" id="cuvee" required>
+      
+      <label for="millesime">Millésime:</label>
+      <input type="number" id="millesime" required>
+      
+      <label for="prix">Prix:</label>
+      <input type="number" id="prix" required>
+
+      <label for="quantite_bouteilles">Quantité bouteilles:</label>
+      <input type="number" id="quantite_bouteilles" >
+      
+      <button type="submit">Ajouter</button>
+    </form>
+    <a href="commercial.html" class="back-link">← Retour</a>
+  </div>
+
+  <script src="modifier_produits.js"></script>
+</body>
+</html>

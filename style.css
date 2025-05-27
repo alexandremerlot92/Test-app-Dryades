@@ -72,6 +72,19 @@ button:hover {
   background: #27ae60;
 }
 
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: red;
+  transition: transform 0.2s;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
+
 .back-link {
   display: block;
   margin-top: 30px;

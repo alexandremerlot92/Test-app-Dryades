@@ -10,26 +10,11 @@
   <div class="container">
     <h1>STOCKS</h1>
       <div class="menu">
-            <a href="afficher_stocks.html" class="button">AFFICHER STOCKS</a>
-    <!-- Table -->
-    <table id="activityTable">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Cuvée</th>
-          <th>Millésime</th>
-          <th>Quantité</th>
-          <th>Commentaire</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- New rows will be added here -->
-      </tbody>
-    </table>
+            <a href="afficher_stock_modifs.html" class="button">AFFICHER MODIFS STOCK</a>
 
     <!-- Form to input new row data -->
-    <h3>Modifier les stocks</h3>
-    <form id="activityForm">
+    <h3>Ajouter du stock</h3>
+    <form id="stockForm">
       <label for="date">Date:</label>
       <input type="date" id="date" required>
       
@@ -45,11 +30,26 @@
       <label for="commentaire">Commentaire:</label>
       <input type="text" id="commentaire" >
       
-      <button type="submit">Modifier</button>
+      <button type="submit">Ajouter</button>
     </form>
-    <a href="index.html" class="back-link">← Back to Menu</a>
+    <a href="commercial.html" class="back-link">← Retour</a>
+
+    <h3>Stock Actuel</h3>
+      <table id="finalStockTable">
+        <thead>
+          <tr>
+            <th>Cuvée</th>
+            <th>Millésime</th>
+            <th>Bouteilles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+
   </div>
 
-  <script src="modifier stocks.js"></script>
+  <script src="modifier_stocks.js"></script>
 </body>
 </html>

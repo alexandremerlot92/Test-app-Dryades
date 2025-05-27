@@ -2,34 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VENTES</title>
-  <link rel="stylesheet" href="style.css">
-  <script>
-    function incrementCount() {
-      const cell = document.getElementById("salesCount");
-      let count = parseInt(cell.textContent, 10);
-      cell.textContent = count + 1;
-    }
-  </script>
+  <link rel="stylesheet" href="style stock.css">
 </head>
 <body>
   <div class="container">
-    <h1>VENTES - Daily Sales</h1>
-    <form>
-      <label>Product Name:
-        <input type="text" name="product" required>
-      </label>
-      <label>Quantity Sold:
-        <input type="number" name="quantity" required>
-      </label>
-      <button type="submit">Submit</button>
+    <h1>VENTES</h1>
+      <div class="menu">
+          <a href="afficher_ventes.html" class="button">AFFICHER VENTES</a>
+
+    <!-- Form to input new row data -->
+    <h3>Modifier les stocks</h3>
+    <form id="salesForm">
+      <label for="date">Date:</label>
+      <input type="date" id="date" required>
+      
+      <label for="contact">Contact:</label>
+      <input type="text" id="contact" required>
+      
+      <label for="produit_id">Produit_ID:</label>
+      <select id="produit_id" required>
+        <option value="">-- Choisir un produit --</option>
+      </select>
+      
+      <label for="vendu_offert">Vendu / Offert:</label>
+      <input type="text" id="vendu_offert" required>
+
+      <label for="quantite">Quantité:</label>
+      <input type="number" id="quantite" required>
+
+      <label for="prix">Prix:</label>
+      <input type="number" id="prix" required>
+
+      <label for="commentaire">Commentaire:</label>
+      <input type="text" id="commentaire" >
+      
+      <button type="submit">Modifier</button>
     </form>
-    <div class="counter-section">
-      <h2>Quick Add</h2>
-      <p>Quick Sales Count: <span id="salesCount">0</span></p>
-      <button onclick="incrementCount()">+1 Sale</button>
-    </div>
-    <a href="index.html" class="back-link">← Back to Menu</a>
+    <a href="commercial.html" class="back-link">← Retour</a>
   </div>
+  <script src="modifier_ventes.js"></script>
 </body>
 </html>
+
