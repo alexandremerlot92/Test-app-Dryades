@@ -1,8 +1,6 @@
-// afficher_produits.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.querySelector("#productTable tbody");
-  
+
   db.collection("products").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       const data = doc.data();

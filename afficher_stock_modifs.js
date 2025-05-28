@@ -1,20 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const savedRows = JSON.parse(localStorage.getItem("stockRows")) || [];
-    console.log("Loaded rows:", savedRows);
     const tbody = document.querySelector("#stockTable tbody");
-
-    // Render each row
-    savedRows.forEach((rowData, index) => {
-      addRowToTable(rowData, index);
+    db.collection("stock").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      addRowToTable(data, doc.id); // doc.id = unique Firebase ID
     });
   });
+});
 
-  function addRowToTable({ date, cuvee, millesime, quantite, commentaire }, index) {
+  function addRowToTable({ date, cuvee, millesime, quantite, commentaire }, docId) {
     const tbody = document.querySelector("#stockTable tbody");
     const row = document.createElement("tr");
 
     row.innerHTML = `
-      <td><button class="delete-btn" data-index="${index}">🗑️</button></td>
+      <td><button class="delete-btn" data-index="${docId}">🗑️</button></td>
       <td>${date}</td>
       <td>${cuvee}</td>
       <td>${millesime}</td>
@@ -25,17 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.appendChild(row);
   }
 
-  // Listen for delete clicks using event delegation
-  document.addEventListener("click", function (event) {
-    if (event.target.classList.contains("delete-btn")) {
-      const index = parseInt(event.target.getAttribute("data-index"));
-
-      // Remove from localStorage
-      const savedRows = JSON.parse(localStorage.getItem("stockRows")) || [];
-      savedRows.splice(index, 1);
-      localStorage.setItem("stockRows", JSON.stringify(savedRows));
-
-      // Refresh the page to re-render table
-      location.reload();
-    }
-  })
+  // Deletion handler
+document.addEventListener("click", function (event) {
+  if (event.target.classList.contains("delete-btn")) {
+    const docId = event.target.getAttribute("data-index");
+    db.collection("stock").doc(docId).delete().then(() => {
+      location.reload(); // Refresh table
+    });
+  }
+});

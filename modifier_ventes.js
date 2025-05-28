@@ -1,14 +1,20 @@
 // Get references
-document.addEventListener("DOMContentLoaded", () => {
-  const productSelect = document.getElementById("produit_id");
-  const products = JSON.parse(localStorage.getItem("productRows")) || [];
+document.addEventListener("DOMContentLoaded", async () => {
+  const cuveeSelect = document.getElementById("cuvee");
 
-  products.forEach(product => {
-    const option = document.createElement("option");
-    option.value = product.id;
-    option.textContent = `${product.id} - ${product.cuvee} ${product.millesime}`;
-    productSelect.appendChild(option);
-  });
+  try {
+    const snapshot = await db.collection("stock").get();
+
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const option = document.createElement("option");
+      option.value = data.cuvee; // use Firebase document ID
+      option.textContent = `${data.cuvee}`;
+      cuveeSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error("Erreur lors du chargement de la cuvee :", error);
+  }
 });
 
 const form = document.getElementById("salesForm");
@@ -19,25 +25,27 @@ form.addEventListener("submit", function(event) {
 
   const date = document.getElementById("date").value;
   const contact = document.getElementById("contact").value;
-  const produit_id = document.getElementById("produit_id").value;
+  const cuvee = document.getElementById("cuvee").value;
+  const millesime = document.getElementById("millesime").value;
   const vendu_offert = document.getElementById("vendu_offert").value;
   const quantite = document.getElementById("quantite").value;
   const prix = document.getElementById("prix").value;
   const commentaire = document.getElementById("commentaire").value;
 
-  if (date && contact && produit_id && vendu_offert && quantite && prix) {
-    const rowData = { date, contact, produit_id, vendu_offert, quantite, prix, commentaire};
+  if (date && contact && cuvee && millesime && vendu_offert && quantite && prix) {
+    const rowData = { date, contact, cuvee, millesime, vendu_offert, quantite, prix, commentaire};
 
-    // Save to localStorage
-    const savedSales = JSON.parse(localStorage.getItem("salesRows")) || [];
-    savedSales.push(rowData);
-    localStorage.setItem("salesRows", JSON.stringify(savedSales));
+    /// Save to Storage
+    console.log("Submitting row:", rowData);
+    db.collection("sales").add(rowData)
+      .then(() => {
+        alert("Vente ajoutée !");
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Erreur lors de l'ajout :", error);
+        alert("Erreur : " + error.message);
+      });
 
-    // Reset the form fields
-    form.reset();
-
-    alert("Entrée ajoutée avec succès !");
-  } else {
-    alert("Veuillez remplir tous les champs obligatoires.");
   }
 });

@@ -21,10 +21,13 @@
       <label for="contact">Contact:</label>
       <input type="text" id="contact" required>
       
-      <label for="produit_id">Produit_ID:</label>
-      <select id="produit_id" required>
-        <option value="">-- Choisir un produit --</option>
+      <label for="cuvee">Cuvée:</label>
+      <select id="cuvee" required>
+        <option value="">-- Choisir une cuvée --</option>
       </select>
+
+      <label for="millesime">Millésime:</label>
+      <input type="number" id="millesime" required>
       
       <label for="vendu_offert">Vendu / Offert:</label>
       <input type="text" id="vendu_offert" required>
@@ -42,10 +45,10 @@
     </form>
     <a href="commercial.html" class="back-link">← Retour</a>
   </div>
-  <script src="modifier_ventes.js"></script>
 
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 
   <script>
     // Your Firebase config
@@ -59,9 +62,13 @@
     };
 
     // Initialize Firebase
+    firebase.firestore.setLogLevel("debug");
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
+
   </script>
+
+  <script src="modifier_ventes.js"></script>
 </body>
 </html>
 

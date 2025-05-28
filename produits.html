@@ -56,10 +56,6 @@
     const app = firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    db.settings({
-	    experimentalForceLongPolling: true,
-	    useFetchStreams: false
-	  });
   </script>
 
   <script src="modifier_produits.js"></script>
