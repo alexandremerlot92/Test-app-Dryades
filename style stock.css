@@ -1,15 +1,15 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  background: #F7F6CF;
   color: #333;
   margin: 0;
-  padding: 0;
+  padding-top: 50px;
 }
 
 .container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
+  /*max-width: 800px;*/
+  /*margin: 50px auto;*/
+  padding: 5px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
@@ -22,18 +22,34 @@ h1, h3 {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  padding: 12px;
-  text-align: left;
-  border: 1px solid #ddd;
+  /*padding: 20px;*/
+  /*margin-bottom: 20px;*/
 }
 
 th {
-  background-color: #3498db;
-  color: white;
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+} 
+
+.table_header {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 1.5rem;
+  background-color: #5784BA;
+}
+
+td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  border-top-left-radius: 8px;
+}
+
+th {
+  background-color: #9AC8EB;
+  color: #1E0F1C;
 }
 
 form {
@@ -55,14 +71,27 @@ input {
 
 button {
   padding: 10px;
-  background-color: #2ecc71;
+  background-color: #4AA3A2;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: fit-content;
+  align-self: center;
+  font-size: 0.75rem;
 }
 
 button:hover {
   background-color: #27ae60;
+}
+
+.footer {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  width: fit-content;
+  color: black;
+  text-align: center;
+  align-self: center;
 }

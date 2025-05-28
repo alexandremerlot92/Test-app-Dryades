@@ -7,14 +7,53 @@
   <link rel="stylesheet" href="style stock.css">
 </head>
 <body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <div class="container">
     <h1>STOCKS</h1>
-      <div class="menu">
-            <a href="afficher_stock_modifs.html" class="button">AFFICHER MODIFS STOCK</a>
+      <a href="afficher_stock_modifs.html" class="button">AFFICHER MODIFS STOCK</a>
 
     <!-- Form to input new row data -->
-    <h3>Ajouter du stock</h3>
+    <!-- <h3>Ajouter du stock</h3> -->
     <form id="stockForm">
+      <table>
+        <thead>
+          <tr>
+            <th class="table_header" colspan="5">Ajouter du stock</th>
+          </tr>
+          <tr>
+            <th>Date</th>
+            <th>Cuvée</th>
+            <th>Millésime</th>
+            <th>Quantité</th>
+            <th>Commentaire</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input type="date" id="date">
+            </td>
+            <td>
+              <input type="text" id="cuvee">
+            </td>
+            <td>
+              <input type="number" id="millesime">
+            </td>
+            <td>
+              <input type="number" id="quantite">
+            </td>
+            <td>
+              <input type="text" id="commentaire">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button type="submit">Ajouter</button>
+    </form>
+
+
+    <!-- <form id="stockForm">
       <label for="date">Date:</label>
       <input type="date" id="date" required>
       
@@ -31,10 +70,10 @@
       <input type="text" id="commentaire" >
       
       <button type="submit">Ajouter</button>
-    </form>
-    <a href="commercial.html" class="back-link">← Retour</a>
+    </form> -->
 
-    <h3>Stock Actuel</h3>
+
+    <h2>Stock Actuel</h2>
       <table id="finalStockTable">
         <thead>
           <tr>
@@ -47,7 +86,10 @@
           <!-- Filled by JS -->
         </tbody>
       </table>
+  </div>
 
+  <div class="footer">
+    <a href="commercial.html" class="back-link">← Retour</a>
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
