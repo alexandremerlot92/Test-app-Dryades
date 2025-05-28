@@ -43,6 +43,25 @@
     <a href="commercial.html" class="back-link">← Retour</a>
   </div>
   <script src="modifier_ventes.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+  <script>
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBJ1qKpFEZb6jAxgOkM-tm2LRbTFZ1cMdI",
+      authDomain: "dryades-f8828.firebaseapp.com",
+      projectId: "dryades-f8828",
+      storageBucket: "dryades-f8828.firebasestorage.app",
+      messagingSenderId: "1036800107130",
+      appId: "1:1036800107130:web:eb66f4c4285108b1ba91c3"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
 </body>
 </html>
 

@@ -1,20 +1,22 @@
 // afficher_produits.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  const savedProduct = JSON.parse(localStorage.getItem("productRows")) || [];
   const tbody = document.querySelector("#productTable tbody");
-
-  savedProduct.forEach((product, index) => {
-    addRowToTable(product, index);
+  
+  db.collection("products").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      addRowToTable(data, doc.id); // doc.id = unique Firebase ID
+    });
   });
 });
 
-function addRowToTable({ id, cuvee, millesime, prix, quantite_bouteilles }, index) {
+function addRowToTable({ id, cuvee, millesime, prix, quantite_bouteilles }, docId) {
   const tbody = document.querySelector("#productTable tbody");
   const row = document.createElement("tr");
 
   row.innerHTML = `
-    <td><button class="delete-btn" data-index="${index}">🗑️</button></td>
+    <td><button class="delete-btn" data-index="${docId}">🗑️</button></td>
     <td>${id}</td>
     <td>${cuvee}</td>
     <td>${millesime}</td>
@@ -28,10 +30,9 @@ function addRowToTable({ id, cuvee, millesime, prix, quantite_bouteilles }, inde
 // Deletion handler
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("delete-btn")) {
-    const index = parseInt(event.target.getAttribute("data-index"));
-    const savedProduct = JSON.parse(localStorage.getItem("productRows")) || [];
-    savedProduct.splice(index, 1);
-    localStorage.setItem("productRows", JSON.stringify(savedProduct));
-    location.reload();
+    const docId = event.target.getAttribute("data-index");
+    db.collection("products").doc(docId).delete().then(() => {
+      location.reload(); // Refresh table
+    });
   }
 });

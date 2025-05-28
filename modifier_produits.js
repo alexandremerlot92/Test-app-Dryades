@@ -16,16 +16,17 @@ form.addEventListener("submit", function(event) {
   if (id && cuvee && millesime && prix && quantite_bouteilles) {
     const rowData = { id, cuvee, millesime, prix, quantite_bouteilles };
 
-    // Save to localStorage
-    const savedProducts = JSON.parse(localStorage.getItem("productRows")) || [];
-    savedProducts.push(rowData);
-    localStorage.setItem("productRows", JSON.stringify(savedProducts));
+    // Save to Storage
+    console.log("Submitting row:", rowData);
+    db.collection("products").add(rowData)
+	  .then(() => {
+	    alert("Produit ajouté !");
+	    form.reset();
+	  })
+	  .catch((error) => {
+	    console.error("Erreur lors de l'ajout :", error);
+	    alert("Erreur : " + error.message);
+	  });
 
-    // Reset the form fields
-    form.reset();
-
-    alert("Entrée ajoutée avec succès !");
-  } else {
-    alert("Veuillez remplir tous les champs obligatoires.");
   }
 });
